@@ -1,2 +1,2 @@
 # redux-learn
-learn react - redux  fetch
+learn react-redux  fetch
