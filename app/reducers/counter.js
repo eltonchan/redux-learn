@@ -2,6 +2,7 @@
  * Created by mac on 2017/5/1.
  */
 import { combineReducers } from 'redux';
+import { REQUEST_POSTS, RECEIVE_POSTS } from '../action/topic';
 
 function counter(state ={ count:0,text:'' }, action) {
     const count = state.count;
@@ -35,6 +36,27 @@ function add_item(state = [],action) {
             return state;
     }
 }
+
+function posts(state = {
+    isFetching: false,
+    items: []
+}, action) {
+    switch (action.type) {
+        case REQUEST_POSTS:
+            return Object.assign({}, state, {
+                isFetching: true,
+            });
+        case RECEIVE_POSTS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                items: action.posts,
+                lastUpdated: action.receivedAt
+            });
+        default:
+            return state
+    }
+}
+
 /**
  * 使用这个方法后 state 的对象就是 state:{
  *      counter:{},
@@ -43,7 +65,8 @@ function add_item(state = [],action) {
  */
 const todoApp = combineReducers({
     counter,
-    add_item
+    add_item,
+    posts
 });
 
 export default todoApp
