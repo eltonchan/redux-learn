@@ -41,7 +41,6 @@ module.exports = {
             'process.env.NODE.ENV':"development"
         }),
         new webpack.HotModuleReplacementPlugin(),//热模块替换插件
-        //提公用js到common.js文件中
         new webpack.optimize.CommonsChunkPlugin('common'),
         new ExtractTextPlugin({
             filename:'style.css',
@@ -50,8 +49,8 @@ module.exports = {
         })
     ],
     devServer: {
-        historyApiFallback: true,//在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
-        inline: true,//设置为true，当源文件改变时会自动刷新页面
-        port: 3000//设置默认监听端口，如果省略，默认为"8080"
+        historyApiFallback: true,
+        inline: true,
+        port: 3000
     }
 };
