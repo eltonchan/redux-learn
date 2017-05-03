@@ -21,7 +21,7 @@ const store = createStore(
         thunkMiddleware, // 允许我们 dispatch() 函数
     )
 );
-console.log(store.getState());
+window.global.getStroe = ()=> store ;
 
 ReactDOM.render(
     <Provider store={store}>
